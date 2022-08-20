@@ -46,6 +46,7 @@
                 android:banner="@drawable/ic_banner"
                 android:icon="@drawable/ic_banner"
                 android:logo="@drawable/ic_banner"
+                android:usesCleartextTraffic="true"
                 android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
