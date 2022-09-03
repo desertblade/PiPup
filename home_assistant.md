@@ -44,58 +44,58 @@ rest_command: !include rest_commands.yaml
 Then add the following to rest_commands.yaml
 ``` yaml
 pipup_image_on_tv:
-	  # Use Pipup to display image notifications on Android TV devices.
-	  url: http://ANDROID_TV_IP_ADDRESS:7979/notify
-	  content_type: 'application/json'
-	  verify_ssl: false
-	  method: 'post'
-	  timeout: 20
-	  payload: >
-	    {
-	      "duration": {{ duration | default(20) }},
-	      "position": {{ position | default(0) }},
-	      "title": "{{ title | default('') }}",
-	      "titleColor": "{{ titleColor | default('#50BFF2') }}",
-	      "titleSize": {{ titleSize | default(10) }},
-	      "message": "{{ message }}",
-	      "messageColor": "{{ messageColor | default('#fbf5f5') }}",
-	      "messageSize": {{ messageSize | default(14) }},
-	      "backgroundColor": "{{ backgroundColor | default('#0f0e0e') }}",
-	      "media": { 
-	        "image": {
-	          "uri": "{{ url }}",
-	          "width": {{ width | default(640) }}
-	        }
-	      }
-	    }
-	 
-	 
-	pipup_url_on_tv:
-   # Use PipUp to display web pages/videos
-	  url: http://ANDROID_TV_IP_ADDRESS:7979/notify
-	  content_type: 'application/json'
-	  verify_ssl: false
-	  method: 'post'
-	  timeout: 20
-	  payload: >
-	    {
-	      "duration": {{ duration | default(20) }},
-	      "position": {{ position | default(0) }},
-	      "title": "{{ title | default('') }}",
-	      "titleColor": "{{ titleColor | default('#50BFF2') }}",
-	      "titleSize": {{ titleSize | default(10) }},
-	      "message": "{{ message }}",
-	      "messageColor": "{{ messageColor | default('#fbf5f5') }}",
-	      "messageSize": {{ messageSize | default(14) }},
-	      "backgroundColor": "{{ backgroundColor | default('#0f0e0e') }}",
-	      "media": { 
-	        "web": {
-	          "uri": "{{ url }}", 
-	          "width": {{ width | default(640) }},
-	          "height": {{ height | default(480) }}
-	        }
-	      }
-	    }
+  # Use Pipup to display image notifications on Android TV devices.
+  url: http://ANDROID_TV_IP_ADDRESS:7979/notify
+  content_type: 'application/json'
+  verify_ssl: false
+  method: 'post'
+  timeout: 20
+  payload: >
+    {
+      "duration": {{ duration | default(20) }},
+      "position": {{ position | default(0) }},
+      "title": "{{ title | default('') }}",
+      "titleColor": "{{ titleColor | default('#50BFF2') }}",
+      "titleSize": {{ titleSize | default(10) }},
+      "message": "{{ message }}",
+      "messageColor": "{{ messageColor | default('#fbf5f5') }}",
+      "messageSize": {{ messageSize | default(14) }},
+      "backgroundColor": "{{ backgroundColor | default('#0f0e0e') }}",
+      "media": { 
+        "image": {
+          "uri": "{{ url }}",
+          "width": {{ width | default(640) }}
+        }
+      }
+    }
+
+
+pipup_url_on_tv:
+  # Use PipUp to display web pages/videos
+  url: http://ANDROID_TV_IP_ADDRESS:7979/notify
+  content_type: 'application/json'
+  verify_ssl: false
+  method: 'post'
+  timeout: 20
+  payload: >
+    {
+      "duration": {{ duration | default(20) }},
+      "position": {{ position | default(0) }},
+      "title": "{{ title | default('') }}",
+      "titleColor": "{{ titleColor | default('#50BFF2') }}",
+      "titleSize": {{ titleSize | default(10) }},
+      "message": "{{ message }}",
+      "messageColor": "{{ messageColor | default('#fbf5f5') }}",
+      "messageSize": {{ messageSize | default(14) }},
+      "backgroundColor": "{{ backgroundColor | default('#0f0e0e') }}",
+      "media": { 
+        "web": {
+          "uri": "{{ url }}", 
+          "width": {{ width | default(640) }},
+          "height": {{ height | default(480) }}
+        }
+      }
+    }
 ```
 
 ## Automation
