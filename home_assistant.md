@@ -8,7 +8,7 @@ I first followed this [excellent write up from Sean](https://seanblanchfield.com
 
 I started looking into using [Frigate's MJPEG Streams](https://docs.frigate.video/integrations/api/#get-apicamera_name), which required modifing the APK to allow non SSL sites. I then expanded this code base to support Javascript for those who want to still use WebRTC and better handling of closing of the WebView.
 
-## Install APK
+# Install APK
 
 Install [ADB](https://www.xda-developers.com/install-adb-windows-macos-linux/#adbsetup) on your computer
 
@@ -30,7 +30,75 @@ Windows users probably don't need the ./
 
 Fire up the App on the FireTV. If you want to test it there are good instrcutions in the write up above.
 
-## Home Assistant Automation
+# Home Assistant 
+
+## Rest Commands
+I am using the same ones in Sean's writeup. 
+
+In the configuration.yaml add this line in the bottom (obvs if you don't already have it)
+
+``` yaml
+rest_command: !include rest_commands.yaml
+```
+
+Then add the following to rest_commands.yaml
+``` yaml
+pipup_image_on_tv:
+	  # Use Pipup to display image notifications on Android TV devices.
+	  url: http://ANDROID_TV_IP_ADDRESS:7979/notify
+	  content_type: 'application/json'
+	  verify_ssl: false
+	  method: 'post'
+	  timeout: 20
+	  payload: >
+	    {
+	      "duration": {{ duration | default(20) }},
+	      "position": {{ position | default(0) }},
+	      "title": "{{ title | default('') }}",
+	      "titleColor": "{{ titleColor | default('#50BFF2') }}",
+	      "titleSize": {{ titleSize | default(10) }},
+	      "message": "{{ message }}",
+	      "messageColor": "{{ messageColor | default('#fbf5f5') }}",
+	      "messageSize": {{ messageSize | default(14) }},
+	      "backgroundColor": "{{ backgroundColor | default('#0f0e0e') }}",
+	      "media": { 
+	        "image": {
+	          "uri": "{{ url }}",
+	          "width": {{ width | default(640) }}
+	        }
+	      }
+	    }
+	 
+	 
+	pipup_url_on_tv:
+   # Use PipUp to display web pages/videos
+	  url: http://ANDROID_TV_IP_ADDRESS:7979/notify
+	  content_type: 'application/json'
+	  verify_ssl: false
+	  method: 'post'
+	  timeout: 20
+	  payload: >
+	    {
+	      "duration": {{ duration | default(20) }},
+	      "position": {{ position | default(0) }},
+	      "title": "{{ title | default('') }}",
+	      "titleColor": "{{ titleColor | default('#50BFF2') }}",
+	      "titleSize": {{ titleSize | default(10) }},
+	      "message": "{{ message }}",
+	      "messageColor": "{{ messageColor | default('#fbf5f5') }}",
+	      "messageSize": {{ messageSize | default(14) }},
+	      "backgroundColor": "{{ backgroundColor | default('#0f0e0e') }}",
+	      "media": { 
+	        "web": {
+	          "uri": "{{ url }}", 
+	          "width": {{ width | default(640) }},
+	          "height": {{ height | default(480) }}
+	        }
+	      }
+	    }
+```
+
+## Automation
 
 Using MJPEG streams from Frigate I found the fastest to load.
 
