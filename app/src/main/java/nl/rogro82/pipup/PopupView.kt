@@ -168,19 +168,21 @@ sealed class PopupView(context: Context, val popup: PopupProps) : LinearLayout(c
     }
 
     private class Web(context: Context, popup: PopupProps, val media: PopupProps.Media.Web): PopupView(context, popup) {
+        private lateinit var webView: WebView
         init { create() }
 
         override fun create() {
             super.create()
 
             val frame = findViewById<FrameLayout>(R.id.popup_frame)
-            val webView = WebView(context).apply {
+            webView = WebView(context).apply {
                 with(settings) {
                     loadWithOverviewMode = true
                     useWideViewPort = true
                     javaScriptEnabled = true
                     domStorageEnabled = true
                     mediaPlaybackRequiresUserGesture = false
+                    //  allowContentAccess = true
                 }
                 loadUrl(media.uri)
             }
@@ -193,6 +195,12 @@ sealed class PopupView(context: Context, val popup: PopupProps) : LinearLayout(c
             }
 
             frame.addView(webView, layoutParams)
+        }
+
+        override fun destroy() {
+            try {
+                webView.destroy();
+            } catch(e: Throwable) {}
         }
     }
 

@@ -3,6 +3,9 @@
 PiPup is an application that allows displaying user-defined custom notifications on Android TV.
 
 __This Fork adds Javascript support, Allows insecure connections (HTTP), and better closing of the webview, which should kill connections to the server.__
+
+[Home Assistant Automation using Frigate](home_assistant.md)
+
 APK can be found here: https://github.com/desertblade/PiPup/releases
 
 The most common use-case for this application is for sending notifications, from a home-automation solution, to your Android TV.
