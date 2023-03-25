@@ -30,6 +30,36 @@ Windows users probably don't need the ./
 
 Fire up the App on the FireTV. If you want to test it there are good instrcutions in the write up above.
 
+## Test it out
+
+Create a file called post.json with the folling content:
+
+```
+	{
+	    "duration": 30,
+	    "position": 0,
+	    "title": "Your awesome title",
+	    "titleColor": "#0066cc",
+	    "titleSize": 20,
+	    "message": "What ever you want to say... do it here...",
+	    "messageColor": "#000000",
+	    "messageSize": 14,
+	    "backgroundColor": "#ffffff",
+	    "media": { 
+	        "image": {
+	            "uri": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/cfcc3137009463.5731d08bd66a1.png", 
+	            "width": 480
+	        }
+	    }
+	}
+```
+
+Run the following command line (change IP address!):
+
+```
+curl -d "@post.json" -H "Content-Type: application/json" -X POST http://ANDROID_TV_IP_ADDRESS:7979/notify
+```
+
 # Home Assistant 
 
 ## Rest Commands
