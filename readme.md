@@ -8,6 +8,8 @@ __This Fork adds Javascript support, Allows insecure connections (HTTP), and bet
 
 APK can be found here: https://github.com/desertblade/PiPup/releases
 
+Another AndroidTV/FireTV notification service that supports RSTP video streams can be found here: https://github.com/gugutab/TvOverlay
+
 The most common use-case for this application is for sending notifications, from a home-automation solution, to your Android TV.
 
 ![](https://github.com/rogro82/PiPup/raw/master/graphics/screenshot-1.png)
