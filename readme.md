@@ -1,3 +1,5 @@
+I have officially moved over to https://github.com/gugutab/TvOverlay
+
 # PiPup
 
 PiPup is an application that allows displaying user-defined custom notifications on Android TV.
